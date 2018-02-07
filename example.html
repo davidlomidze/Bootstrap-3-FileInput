@@ -29,7 +29,7 @@
                 <div class="col-sm-6">
 
 
-                    <input type="file" id="file-input" accept="video/mp4">
+                    <input type="file" id="file-input" accept="image/gif">
 
                     <script>
 
@@ -41,10 +41,10 @@
                                 browseButtonText: '<i class="glyphicon glyphicon-folder-open" style="margin-right: 5px;"></i> Browse',
                                 clearButtonText: '<i class="glyphicon glyphicon-trash"></i>',
                                 clearButtonClass: "btn-sm btn-danger",
-                                // allowedExtensions: ["jpg", "png"],
+                                allowedExtensions: ["jpg", "png"],
                                 init: function () {
 
-                                    alert("Plugin initialized!");
+                                    // alert("Plugin initialized!");
 
                                 },
                                 change: function (fileName, fileExtension, isValid) {
@@ -52,13 +52,12 @@
                                     alert("File name: " + fileName + " | File extension: " + fileExtension + " | Valid: " + isValid);
 
                                 },
-                                clear: function() {
+                                clear: function(oldFileName) {
 
-                                    alert("File input cleared!");
+                                    alert("File input cleared! File was: " + oldFileName);
 
                                 }
                             });
-
 
 
                         });

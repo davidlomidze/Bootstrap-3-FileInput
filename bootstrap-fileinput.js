@@ -132,19 +132,20 @@
          */
         change: function (event) {
 
-            console.log(event);
+            // define event target
+            var target = event.target
 
             // Get browsed file name
-            this.fileName = event.target.value.replace(/^.*[\\\/]/, "");
+            this.fileName = target.files[0].name;
 
             // Get browsed file extension
-            this.fileExtension = event.target.value.split(".").pop().toLowerCase();
+            this.fileExtension = target.files[0].name.split(".").pop().toLowerCase();
 
             // Get browsed file validity
             if( Array.isArray(this.options.allowedExtensions) ) {
                 this.isValid = this.checkValidity();
             } else {
-                this.isValid = event.target.validity.valid;
+                this.isValid = (new RegExp(target.accept.replace("*", ".\*"))).test(target.files[0].type);
             }
 
             // Show or hide clearButton if input is valid or not
@@ -198,6 +199,12 @@
             this.$fileInput.unwrap();
             this.$fileInput.attr("value", "");
 
+            // Clone fineName for passing to custom clear method
+            var fileName = this.fileName;
+
+            // Reset fileName
+            this.fileName = null;
+
             // Clean textInput
             this.$textInput.val("");
 
@@ -205,7 +212,7 @@
             this.$clearButton.hide();
 
             // Run custom method with file input scope
-            this.options.clear.call( this.$fileInput, this.fileName );
+            this.options.clear.call( this.$fileInput, fileName );
 
         },
 
