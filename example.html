@@ -14,22 +14,21 @@
 
         <!-- import FileInput plugin -->
         <script src="bootstrap-fileinput.js"></script>
+
+        <!-- import localizations file (Optional - Default: "en") -->
         <script src="locales/bootstrap-fileinput.en.js"></script>
 
     </head>
 
     <body>
 
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="container">
+
+        <div class="container" style="margin-top: 100px;">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6 col-sm-offset-3">
 
 
-                    <input type="file" id="file-input" accept="image/gif">
+                    <input type="file" id="file-input" accept="image/*">
 
                     <script>
 
@@ -38,10 +37,10 @@
                             $("#file-input").fileinput({
                                 inputClass: "input-sm",
                                 browseButtonClass: "btn-sm btn-primary",
-                                browseButtonText: '<i class="glyphicon glyphicon-folder-open" style="margin-right: 5px;"></i> Browse',
+                                browseButtonText: '<i class="glyphicon glyphicon-folder-open" style="margin-right: 10px;"></i>Browse',
                                 clearButtonText: '<i class="glyphicon glyphicon-trash"></i>',
                                 clearButtonClass: "btn-sm btn-danger",
-                                allowedExtensions: ["jpg", "png"],
+                                allowedExtensions: ["jpg", "png"], // Overrides accept="image/*"
                                 init: function () {
 
                                     // alert("Plugin initialized!");
@@ -49,12 +48,12 @@
                                 },
                                 change: function (fileName, fileExtension, isValid) {
 
-                                    alert("File name: " + fileName + " | File extension: " + fileExtension + " | Valid: " + isValid);
+                                    alert("File name: " + fileName + "\nFile extension: " + fileExtension + "\nValid: " + isValid);
 
                                 },
                                 clear: function(oldFileName) {
 
-                                    alert("File input cleared! File was: " + oldFileName);
+                                    alert("File input cleared!\nFile was: " + oldFileName);
 
                                 }
                             });
