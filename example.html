@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DavidLomidze - Bootstrap 3 - FileInput</title>
+
+        <!-- first import jquery -->
+        <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+        <!-- import bootstrap css -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- import bootrstrap js -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- import FileInput plugin -->
+        <script src="bootstrap-fileinput.js"></script>
+        <script src="locales/bootstrap-fileinput.en.js"></script>
+
+    </head>
+
+    <body>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+
+
+                    <input type="file" id="file-input" accept="video/mp4">
+
+                    <script>
+
+                        $(function() {
+
+                            $("#file-input").fileinput({
+                                inputClass: "input-sm",
+                                browseButtonClass: "btn-sm btn-primary",
+                                browseButtonText: '<i class="glyphicon glyphicon-folder-open" style="margin-right: 5px;"></i> Browse',
+                                clearButtonText: '<i class="glyphicon glyphicon-trash"></i>',
+                                clearButtonClass: "btn-sm btn-danger",
+                                // allowedExtensions: ["jpg", "png"],
+                                init: function () {
+
+                                    alert("Plugin initialized!");
+
+                                },
+                                change: function (fileName, fileExtension, isValid) {
+
+                                    alert("File name: " + fileName + " | File extension: " + fileExtension + " | Valid: " + isValid);
+
+                                },
+                                clear: function() {
+
+                                    alert("File input cleared!");
+
+                                }
+                            });
+
+
+
+                        });
+
+                    </script>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
